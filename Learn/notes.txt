@@ -1,0 +1,17 @@
+cargo build => to build a executable
+cargo run => build an executable and then run it
+cargo check => check for errors without building a executable
+
+in rust variable are declared using the "let" keyword 
+
+in rust by default the variables are immutable
+
+rust has automatic type inference
+
+io::stdin().read_line(&mut string_var)
+
+Result{ok, err}
+
+handle this using expect function which prints out user given text when the Result is error
+
+Ordering is a enum which is the result of comparison of two numbers -1=>less 1=>greater 0=>equal
