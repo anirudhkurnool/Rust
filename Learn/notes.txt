@@ -15,3 +15,40 @@ Result{ok, err}
 handle this using expect function which prints out user given text when the Result is error
 
 Ordering is a enum which is the result of comparison of two numbers -1=>less 1=>greater 0=>equal
+
+variable are by default immutable in rust
+
+const variables must be type annotated
+
+value of a const should be known at run time i.e you can't assign the return value of a function to const variables 
+
+Rust has 4 main scalar data type 
+(1)Integers - signed    - i8, i16, i32, i64, i128, isize, iarch(arhitecture dependent)
+            - unsigned  - u8, u16, u32, u64, u128, usize, uarch(arhitecture dependent)
+(2)Floats - f8, f16, f32, f64
+(3)Booleans - bool 
+(4)Charaters - char (Unicode character)
+
+Integer overflow 
+(1)In debug mode rust panics 
+(2)In release modes rust performs 2's complement wrapping
+
+default integer is i32 
+default float is  f64
+
+Rust has 2 compound types 
+(1)Tuple (can contain heteregenous data)
+(2)Arrays (can contian only homogeneous data)
+
+Rust arrays have bound checking 
+
+rust uses snake_case for function names
+
+In rust a line of code is either a statement(ends with ;) or expression
+
+All expressions return something in rust
+
+In rust for control flow the conditions should be explicitly boolean 
+if number {
+    println!("throws a error ")
+}
