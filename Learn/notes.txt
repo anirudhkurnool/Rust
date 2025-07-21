@@ -2,7 +2,7 @@ cargo build => to build a executable
 cargo run => build an executable and then run it
 cargo check => check for errors without building a executable
 
-in rust variable are declared using the "let" keyword 
+in rust variable are declared using the "let" keyword
 
 in rust by default the variables are immutable
 
@@ -18,29 +18,29 @@ Ordering is a enum which is the result of comparison of two numbers -1=>less 1=>
 
 const variables must be type annotated
 
-value of a const should be known at run time i.e you can't assign the return value of a function to const variables 
+value of a const should be known at run time i.e you can't assign the return value of a function to const variables
 
-Rust has 4 main scalar data type 
+Rust has 4 main scalar data type
 (1)Integers - signed    - i8, i16, i32, i64, i128, isize, iarch(architecture dependent)
             - unsigned  - u8, u16, u32, u64, u128, usize, uarch(architecture dependent)
 (2)Floats - f8, f16, f32, f64
-(3)Booleans - bool 
+(3)Booleans - bool
 (4)Charaters - char (Unicode character)
 
-Integer overflow 
-(1)In debug mode rust panics 
+Integer overflow
+(1)In debug mode rust panics
 (2)In release modes rust performs 2's complement wrapping
 
-2's complement wrapping ??? 
+2's complement wrapping ???
 
-default integer is i32 
+default integer is i32
 default float is  f64
 
-Rust has 2 compound types 
+Rust has 2 compound types
 (1)Tuple (can contain heteregenous data)
 (2)Arrays (can contian only homogeneous data)
 
-Rust arrays have bound checking 
+Rust arrays have bound checking
 
 rust uses snake_case for function names
 
@@ -48,7 +48,7 @@ In rust a line of code is either a statement(ends with ;) or expression
 
 All expressions return something in rust
 
-In rust for control flow the conditions should be explicitly boolean 
+In rust for control flow the conditions should be explicitly boolean
 if number {
     println!("throws a error ")
 }
@@ -64,7 +64,7 @@ rust function activation is same as C functions activation record
 
 strings in rust by default stored on the heap ?(string literals vs String)
 
-accessing variable on stack in faster than accessing variables on the heap ??? 
+accessing variable on stack in faster than accessing variables on the heap ???
 
 allocating memory on the stack is much faster than allocating memory on the heap(a algo has to look for the best possible block of memory that is large enough for the data we want to store) (best fit / worst fit/) ??
 
@@ -75,10 +75,121 @@ Ownership Rules In Rust
 
 
 Shallow Copy vs Deep Copy ???
-Pass by value vs Pass by reference ??? 
+Pass by value vs Pass by reference ???
 
-Rules for reference 
-(1)At any point in time there can be any number of immutable references or a single mutable reference 
+Rules for reference
+(1)At any point in time there can be any number of immutable references or a single mutable reference
 (2)Reference must always be valid
 
 Slices borrow only certain amount of value of the complex type rather than the whole
+
+impl blocks host the methods assosiated with the
+
+rust automatically dereferences a pointer when necessary
+
+a struct can have many impl blocks
+
+assosiated functions of a struct = methods which don't take in self i.e not related to a instance of a struct
+
+match expression is exhaustive i.e behavior for all the cases should be defined
+
+cargo new => creates a crate ; Two Types of crates (1)binary (2)library
+if your src contains a main.rs then it is a binary crate if it contains lib.rs then it is a library crate
+crate root => entry point of rust compiler crate root of binary is main.rs and library is lib.rs
+if both main.rs and lib.rs are present in src then that rust project has two crates.
+
+crates contain modules
+
+A package should have atleast one crate
+A package can have 0 library crates or 1 library crate
+A package can have any number of binary crates
+
+To create a library the cargo command is => cargo new --lib library_new
+this will create a rust project with lib.rs rather than main.rs
+
+by default a child module is always private
+
+by default everything inside a module is private we can make things public using "pub" keyword
+
+for structs inside a module you would explicitly tell which of these field can be public using the "pub" keyword and these field can be public iff the whole struct is public 
+
+for enums its fields are automatically public if the whole enum is public
+
+"use" allows to bring a path into scope 
+
+* = dereference operator
+
+vector can only store homogeneous data
+
+String are collection of utf-8 bytes
+
+utf-8 is backwards compatable with ASCII
+
+String cannot be indexed like vectors as the strings are utf-8 encoded
+
+Grapheme Clusters ??? 
+
+Result Enum is used to handle errors gracefully
+
+You can't use ? operator in main function ?
+
+main function can return values?
+
+Generics don't have a performance cost
+
+rust traits == golang interfaces
+
+traits and where keyword ??? 
+
+implementing a trait on a trait ???
+
+dangling reference : reference that points to invalid data 
+
+generic lifetime annotations always start with '
+
+generic lifetime annotations don't change the lifetime rather they just create reltionships between lifetimes
+
+if a function takes in 2 argument and returns a value and if all three have the same lifetime annotations the return value will have a lifetime of the smallest lifetime of the two arguments
+
+1)Input Lifetimes 2)Output Lifetimes
+
+Lifetime Rules
+(1)Each parameter that is a reference gets its own lifetime parameter
+(2)If there is exactly one input lifetime parameter that input lifetime parameter is assigned to output lifetime parameters
+(3)If there are multiple input lifetime parameters but one of them is &self or &mut self the lifetime of self is assigned to all output parameters
+
+static lifetime = reference could live as the duration of the program 
+
+[test]
+
+[#cfg(test)]
+
+a test is considered a failure if something inside the test function panics
+
+assert()
+
+assert_ne()
+
+partial equal and debug traits
+
+cargo test
+
+by default all tests in a seperate thread parallely
+
+test binary
+
+-- --show-output
+
+cargo test <test_name>
+
+cargo test <test_prefix>
+
+unit tests and integration test
+
+unit tests are put in the same file are normal code
+
+integration tests are put in tests folder
+
+every file in the tests folder is treated as a seperate crate
+
+mod.rs ??? 
